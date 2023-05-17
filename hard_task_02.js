@@ -11,5 +11,5 @@ const firstNum = +prompt("введите первое число"),
 
 const calcLesserNumber = (first, second) => (first < second) ? first : second;
 
- alert(`Наименьшее число: ${calcLesserNumber(firstNum, secondNum)}`);
+alert(`Наименьшее число: ${calcLesserNumber(firstNum, secondNum)}`);
 

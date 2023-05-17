@@ -25,7 +25,7 @@ alert(`наибольший общий делитель: ${calcGcdOne(firstNumbe
 // 2 способ - Алгоритм вычитания
 
 const calcGcdTwo = (firstNum, secondNum) => {
-	while (firstNum != secondNum) {
+	while (firstNum !== secondNum) {
     if (firstNum > secondNum) {
       firstNum = firstNum - secondNum;
     } else {
@@ -33,10 +33,10 @@ const calcGcdTwo = (firstNum, secondNum) => {
     }
   }
 
-  return firstNum + secondNum;
+  return firstNum;
 };
 
-alert(`наибольший общий делитель: ${calcGcdTwo(firstNumber, secondNumber)}`);
+console.log(`наибольший общий делитель: ${calcGcdTwo(firstNumber, secondNumber)}`);
 
 
 

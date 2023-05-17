@@ -4,31 +4,40 @@
 
 // 1 способ - Алгоритм Евклида
 
-let firstNum = Math.abs(+prompt('Введите первое число')),
-	secondNum = Math.abs(+prompt('Введите второе число'));
+let firstNumber = Math.abs(+prompt('Введите первое число')),
+	secondNumber = Math.abs(+prompt('Введите второе число'));
 
-while (firstNum != 0 && secondNum != 0) {
-	if (firstNum > secondNum ) {
-		firstNum = firstNum % secondNum ;
-	} else {
-		secondNum = secondNum % firstNum;
+const calcGcdOne = (firstNum, secondNum) => {
+
+	while (firstNum != 0 && secondNum != 0) {
+		if (firstNum > secondNum ) {
+			firstNum = firstNum % secondNum ;
+		} else {
+			secondNum = secondNum % firstNum;
+		}
 	}
+
+	return firstNum + secondNum;
 }
 
-alert(`наибольший общий делитель : ${firstNum + secondNum}`);
+alert(`наибольший общий делитель: ${calcGcdOne(firstNumber, secondNumber)}`);
 
 // 2 способ - Алгоритм вычитания
 
-firstNum = Math.abs(+prompt('Введите первое число'));
-secondNum = Math.abs(+prompt('Введите второе число'));
+const calcGcdTwo = (firstNum, secondNum) => {
+	while (firstNum != secondNum) {
+    if (firstNum > secondNum) {
+      firstNum = firstNum - secondNum;
+    } else {
+      secondNumber = secondNum - firstNum;
+    }
+  }
 
-while (firstNum != secondNum) {
-	if (firstNum > secondNum ) {
-		firstNum = firstNum - secondNum ;
-	} else {
-		secondNumber  = secondNum - firstNum;
-	}
-}
+  return firstNum + secondNum;
+};
 
-alert(`наибольший общий делитель: ${firstNum}`);
+alert(`наибольший общий делитель: ${calcGcdTwo(firstNumber, secondNumber)}`);
+
+
+
 

@@ -6,10 +6,10 @@
 
 // Не используйте Math.max и Math.min
 
+const firstNum = +prompt("введите первое число"),
+  secondNum = +prompt("введите второе число");
 
+const calcLesserNumber = (first, second) => (first < second) ? first : second;
 
-function min(firstNum, secondNum ) {
-  return (firstNum < secondNum ) ? firstNum : secondNum ;
+ alert(`Наименьшее число: ${calcLesserNumber(firstNum, secondNum)}`);
 
-  
-}

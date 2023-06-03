@@ -9,7 +9,9 @@
 const firstNum = +prompt("введите первое число"),
   secondNum = +prompt("введите второе число");
 
-const calcLesserNumber = (first, second) => (first < second) ? first : second;
+const calcLesserNumber = (first, second) => {
+  return ((first + second) - Math.abs(first - second)) / 2;
+};
 
 alert(`Наименьшее число: ${calcLesserNumber(firstNum, secondNum)}`);
 

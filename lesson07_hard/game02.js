@@ -4,7 +4,7 @@ const checkNumber = (num, min, max, firstData) => {
   return !Number.isInteger(num) || num > max || num < min || num === firstData;
 }
 
-// вычисление еоличества попыток в игре
+// вычисление количества попыток в игре
 const calcNumberAttempts = (min, max) => {
   const result = (max === 100 && min === 50) ? 15 : (max - min) * 0.3;
 

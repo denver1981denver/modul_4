@@ -1,7 +1,7 @@
 'use strict';
 
  (() => {
-  const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
+  const FIGURES = ['камень', 'ножницы', 'бумага'];
 
    const getRandomIntInclusive = () => {
    return Math.floor(Math.random() * 3);
@@ -13,48 +13,70 @@
         computer: 0,
       };
 
+  const check = () => {
+    const user = prompt(`${[...FIGURES]}?`);
+    
+    if(user === null) {
+      if (confirm(`Вы действительно хотите выйти? `)) {
+        return null;
+      } else {
+         return check();
+      }
+    }
+
+    else {
+      return filter(user);
+    }
+  };
+
+  const filter = str => {
+
+    if (str === '') return check();
+    const res = FIGURES.find(element => element.slice(0, str.length) === str.toLowerCase());
+
+    if(res) {
+      return res;
+    } else {
+      return check();
+    }
+  };
+
     //  const lang = language === 'EN' || language === 'ENG' ?
     //  FIGURES_ENG : FIGURES_RUS;
-
     // const lang = FIGURES_RUS;
 
      return function start() {
-       const userMove = prompt(`${[...FIGURES_RUS]}?`);
-       const computerMove = FIGURES_RUS[getRandomIntInclusive()];
+      const userMove = check();
+       const computerMove = FIGURES[getRandomIntInclusive()];
        
       if (userMove === null) {
-        if (confirm(`Вы действительно хотите выйти?
-                    игрок: ${result.player}
-                    компьютер: ${result.computer}`)) {
-          return;
-        } else {
-           return start();
-        }
+          return alert(`компьютер: ${result.computer}\n игрок: ${result.player}`);
+        }; 
         
-      }
         if (userMove === computerMove) {
-          alert("ничья");
+          alert(`Вы: ${userMove}
+            компьютер: ${computerMove}
+            Ничья`);
         } else {
           if (
             (userMove === "камень" && computerMove === "ножницы") ||
             (userMove === "ножницы" && computerMove === "бумага") ||
             (userMove === "бумага" && computerMove === "камень")
           ) {
-            result.player += 1;
-            alert(` игрок победил
-            игрок: ${result.player}
-                    компьютер: ${result.computer}
-                    
-                            `);
-            if(!confirm('Хотите сыграть ещё?')) {
-              return;
+            result.player++;
+            alert(`Вы: ${userMove}
+              компьютер: ${computerMove}
+              Вы выиграли`);
+            if(!confirm('Ещё?')) {
+              return alert(`Результат:
+                Компьютер ${result.computer}
+                Игрок ${result.player}`);
             }
           } else {
-            result.computer += 1;
-            alert(` компьютер победил
-                    игрок: ${result.player}
-                    компьютер: ${result.computer}
-                                    `);
+            result.computer++;
+            alert(`Вы: ${userMove}
+                   компьютер: ${computerMove}
+                    Компьютер выиграл`);
           }
         }
 
@@ -69,8 +91,4 @@
 
 
 
-
-//  const a = prompt([...FIGURES_RUS] + '?');
-
-// console.log();
-
+ 

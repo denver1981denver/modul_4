@@ -1,6 +1,21 @@
 'use strict';
+// хранение данных о победителе в RPS
+window.resultRPS = {
+  player: true,
+};
 
-const startGame = confirm('Хотите играть на русском?') ?
-window.RPS.game() : window.RPS.game('ENG');
+const startGameRPS = window.RPS.game();
 
-startGame();
+const startGames = () => {
+  do {
+    if (!startGameRPS()) {
+      if (window.marbles.game()) {
+        return;
+      }
+    } else {
+      return;
+    }
+  } while (confirm('Сыграем ещё разок?'));
+};
+
+startGames();

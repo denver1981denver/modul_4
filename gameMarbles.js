@@ -7,6 +7,7 @@ window.marbles = (() => {
   // получен массив для фильтрации данных игрока
   const getArrayNumbersBalls = (numBalls) => {
     const arrayBalls = [];
+
     for (let i = numBalls; i; i--) {
       arrayBalls.push(i);
     }
@@ -33,6 +34,7 @@ window.marbles = (() => {
 
       hiddenNumber = +hiddenNumber;
     } while (!checkNumbersBalls(hiddenNumber, numBalls));
+
     return hiddenNumber;
   };
   // функция игры
@@ -64,6 +66,11 @@ window.marbles = (() => {
         if (numberBalls.player < 0) {
           numberBalls.player = 0;
         }
+
+        if (numberBalls.bot > 10) {
+          numberBalls.bot = 10;
+        }
+
         return true;
       } else {
         numberBalls.bot -= playerMove;
@@ -71,6 +78,11 @@ window.marbles = (() => {
         if (numberBalls.bot < 0) {
           numberBalls.bot = 0;
         }
+
+        if (numberBalls.player > 10) {
+          numberBalls.player = 10;
+        }
+
         return false;
       }
     };
